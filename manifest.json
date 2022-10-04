@@ -2,8 +2,46 @@
   "name": "Frame Overlay",
   "id": "1150102965898213439",
   "api": "1.0.0",
-  "main": "code.js",
+  "main": "dist/code.js",
   "editorType": [
     "figma"
+  ],
+  "menu": [
+    {
+      "name": "Create overlay",
+      "command": "create_overlay",
+      "parameters": [
+        {
+          "name": "Fill",
+          "key": "color",
+          "description": "Specify the fill of the frame overlay"
+        },
+        {
+          "name": "Opacity",
+          "key": "opacity",
+          "description": "Specify the opacity of the frame overlay",
+          "allowFreeform": true,
+          "optional": true
+        }
+      ]
+    },
+    {
+      "separator": true
+    },
+    {
+      "name": "Save overlay fill",
+      "command": "save_color"
+    },
+    {
+      "name": "Remove overlay fill",
+      "command": "remove_color",
+      "parameters": [
+        {
+          "name": "Fill",
+          "key": "colorToRemove",
+          "description": "Choose the fill you want to remove"
+        }
+      ]
+    }
   ]
 }
