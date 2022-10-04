@@ -95,44 +95,46 @@ const createOverlay = async (selection, color, opacity) => {
 
   for (const node of selection) {
     // Only process visible frame nodes
-    if (node.visible && node.type === 'FRAME') {
-      const existingOverlay = node.findChild(n => n.name === overlayName);
+    if (node.visible) {
+      if (node.type === 'FRAME' || node.type === 'COMPONENT') {
+        const existingOverlay = node.findChild(n => n.name === overlayName);
 
-      if (existingOverlay !== null) {
-        // Update fill when overlay already exists
-        await applyFill(existingOverlay, color, opacity);
-      } else {
-        const overlay = figma.createFrame();
-        
-        overlay.name = overlayName;
-        
-        overlay.x = 0;
-        overlay.y = 0;
-        
-        overlay.resize(node.width - node.paddingLeft - node.paddingRight, node.height - node.paddingTop - node.paddingBottom);
-        overlay.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
-        
-        // Find the first layer that may be intended to be above the overlay
-        const existingTopLayer = node.findChild(n => topLayerNames.some(e => n.name.toLowerCase().replace(/\s+/g, '').includes(e)));
-        
-        if (existingTopLayer !== undefined && existingTopLayer !== null) {
-          const index = node.children.indexOf(existingTopLayer);
+        if (existingOverlay !== null) {
+          // Update fill when overlay already exists
+          await applyFill(existingOverlay, color, opacity);
+        } else {
+          const overlay = figma.createFrame();
           
-          // Insert overlay below top layer
-          if (index > -1) {
-            node.insertChild(index, overlay);
+          overlay.name = overlayName;
+          
+          overlay.x = 0;
+          overlay.y = 0;
+          
+          overlay.resize(node.width - node.paddingLeft - node.paddingRight, node.height - node.paddingTop - node.paddingBottom);
+          overlay.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
+          
+          // Find the first layer that may be intended to be above the overlay
+          const existingTopLayer = node.findChild(n => topLayerNames.some(e => n.name.toLowerCase().replace(/\s+/g, '').includes(e)));
+          
+          if (existingTopLayer !== undefined && existingTopLayer !== null) {
+            const index = node.children.indexOf(existingTopLayer);
+            
+            // Insert overlay below top layer
+            if (index > -1) {
+              node.insertChild(index, overlay);
+            } else {
+              node.appendChild(overlay);
+            }
           } else {
             node.appendChild(overlay);
           }
-        } else {
-          node.appendChild(overlay);
+          
+          if (node.layoutMode !== 'NONE') {
+            overlay.layoutPositioning = 'ABSOLUTE';
+          }
+          
+          await applyFill(overlay, color, opacity);
         }
-        
-        if (node.layoutMode !== 'NONE') {
-          overlay.layoutPositioning = 'ABSOLUTE';
-        }
-        
-        await applyFill(overlay, color, opacity);
       }
     }
   }
