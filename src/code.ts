@@ -8,7 +8,7 @@ const removeColorSuccessMessage = 'Removed custom overlay fill.';
 const removeColorNoColorsMessage = 'There are no custom overlay fills.';
 
 const overlayName = 'Overlay';
-const topLayerNames = ['sheet', 'modal', 'popover', 'alert', 'statusbar', 'keyboard', 'dynamicisland', 'contextualmenu', 'appclip', 'notification', 'faceid', 'touchid'];
+const topLayerNames = ['sheet', 'modal', 'popover', 'alert', 'statusbar', 'keyboard', 'dynamicisland', 'contextmenu', 'contextualmenu', 'appclip', 'notification', 'faceid', 'touchid'];
 
 const componentToHex = (c) => {
   // Convert float colour value to integer value
