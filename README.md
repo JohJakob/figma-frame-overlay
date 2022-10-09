@@ -1,40 +1,26 @@
-Below are the steps to get your plugin running. You can also find instructions at:
+# Frame Overlay
 
-  https://www.figma.com/plugin-docs/setup/
+_[Figma](https://figma.com/about) plugin to create custom overlays for any frame_
 
-This plugin template uses Typescript and NPM, two standard tools in creating JavaScript applications.
+![Plugin Cover](/assets/cover.png)
 
-First, download Node.js which comes with NPM. This will allow you to install TypeScript and other
-libraries. You can find the download link here:
+## Features
 
-  https://nodejs.org/en/download/
+- Quickly create overlays filling the entire frame
+- Use any fill and set custom opacities
+- Save custom overlay fills, including library styles, gradients, and images. To do that, select a layer with the fill you want to save and run the command “Save overlay fill”
+- Remove custom overlay fills using the “Remove overlay fill” command
 
-Next, install TypeScript using the command:
+- Automatically updates the fill of an existing overlay layer (named “Overlay”) when the plugin is run again
+- The overlay will be placed below layers like popovers, alerts, context menus, notifications, and more
 
-  npm install -g typescript
+## Notes
 
-Finally, in the directory of your plugin, get the latest type definitions for the plugin API by running:
+- The overlay will be placed below the first layer on the first level of the selected frame that has one of the following terms in its name: Alert, App Clip, Context Menu, Contextual Menu, Dynamic Island, Face ID, Keyboard, Modal, Notification, Popover, Sheet, Status Bar, and Touch ID
+- In frames with Auto Layout, the overlay will be positioned absolutely
 
-  npm install --save-dev @figma/plugin-typings
+## Roadmap
 
-If you are familiar with JavaScript, TypeScript will look very familiar. In fact, valid JavaScript code
-is already valid Typescript code.
-
-TypeScript adds type annotations to variables. This allows code editors such as Visual Studio Code
-to provide information about the Figma API while you are writing code, as well as help catch bugs
-you previously didn't notice.
-
-For more information, visit https://www.typescriptlang.org/
-
-Using TypeScript requires a compiler to convert TypeScript (code.ts) into JavaScript (code.js)
-for the browser to run.
-
-We recommend writing TypeScript code using Visual Studio code:
-
-1. Download Visual Studio Code if you haven't already: https://code.visualstudio.com/.
-2. Open this directory in Visual Studio Code.
-3. Compile TypeScript to JavaScript: Run the "Terminal > Run Build Task..." menu item,
-    then select "npm: watch". You will have to do this again every time
-    you reopen Visual Studio Code.
-
-That's it! Visual Studio Code will regenerate the JavaScript file every time you save.
+- Overlay fill previews in the quick actions bar
+- Ability to enter colour codes directly
+- Ability to save and apply custom effects to overlays
