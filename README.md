@@ -14,10 +14,10 @@ _[Figma](https://figma.com/about) plugin to create custom overlays for any frame
 - Automatically updates the fill of an existing overlay layer (named “Overlay”) when the plugin is run again
 - The overlay will be placed below layers like popovers, alerts, context menus, notifications, and more
 
-## Notes
-
-- The overlay will be placed below the first layer on the first level of the selected frame that has one of the following terms in its name: Alert, App Clip, Context Menu, Contextual Menu, Dynamic Island, Face ID, Keyboard, Modal, Notification, Popover, Sheet, Status Bar, and Touch ID
-- In frames with Auto Layout, the overlay will be positioned absolutely
+> **Note**
+>
+> - The overlay will be placed below the first layer on the first level of the selected frame that has one of the following terms in its name: Alert, App Clip, Context Menu, Contextual Menu, Dynamic Island, Face ID, Keyboard, Modal, Notification, Popover, Sheet, Status Bar, and Touch ID
+> - In frames with Auto Layout, the overlay will be positioned absolutely
 
 ## Roadmap
 
